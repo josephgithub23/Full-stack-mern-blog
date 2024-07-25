@@ -49,8 +49,9 @@ export const signin = async (req, res, next) => {
     if (!validPassword) {
       return next(errorHandler(404, "Invalid credentials"));
     }
-
+    // auth the signin with jwt
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+
     // remove the password from the response to client
     const { password: pass, ...rest } = validUser._doc;
 

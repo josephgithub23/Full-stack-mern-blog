@@ -13,7 +13,10 @@ export default function SignUp() {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value.trim(),
-    }); /**trim is to remove the white space from the input fields in case a user press space bar */
+    });
+
+    /**trim is to remove the white
+     * space from the input fields in case a user press space bar */
   };
 
   /**
@@ -103,8 +106,8 @@ export default function SignUp() {
             >
               {loading ? (
                 <>
-                  (<Spinner size={"sm"} />
-                  <span className="p-3">Loading...</span>)
+                  <Spinner size="sm" />
+                  <span className="pl-3">Loading...</span>
                 </>
               ) : (
                 " Sign Up"
