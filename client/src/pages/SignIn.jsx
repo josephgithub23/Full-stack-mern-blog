@@ -7,6 +7,7 @@ import {
   signInSuccess,
   signInFailure,
 } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 /**
  * We import the userSlice reducers
  * We also import useSelector to manage the error and loading state in the UI from the userSlice reducer.
@@ -113,6 +114,7 @@ export default function SignIn() {
                 " Sign In"
               )}
             </Button>
+            <OAuth/>
           </form>
           <div className="flex mt-4 text-sm gap-2">
             <span>Don&apos;t have an account?</span>
