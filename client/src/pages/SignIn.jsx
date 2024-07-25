@@ -9,7 +9,8 @@ import {
 } from "../redux/user/userSlice";
 /**
  * We import the userSlice reducers
- * We also import useSelector to manage the error and loading state in the UI from the userSlice reducer
+ * We also import useSelector to manage the error and loading state in the UI from the userSlice reducer.
+ * We also install the redux persist to prevent losing the user data if the page reloads or refreshes.
  */
 
 export default function SignIn() {
