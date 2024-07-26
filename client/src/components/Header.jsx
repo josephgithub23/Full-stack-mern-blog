@@ -11,20 +11,28 @@ import {
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
-import { FaMoon } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+
+import { toggleTheme } from "../redux/theme/themeSlice";
 
 /**
  * In order to show the active nav we use the useLocation hook to determine the current path from react-router.
  *
- * To update the header content each user after login, we import useSelector from from redux to have access to the currentUser info from the redux store
+ * To update the header content each user after login, we import useSelector from from redux to have access to the currentUser info from the redux store.
+ *
+ * to implement the dark mood here first we import useDispatch and toggleTheme from the store.
+ *
+ * To toggle the icons based on the theme mood, we import the theme from the store with useSelector.
  *
  */
 
 export default function Header() {
   const path = useLocation().pathname;
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
+
   return (
     <Navbar className="border-b-2">
       <Link
@@ -49,8 +57,13 @@ export default function Header() {
       </Button>
       <div className="flex md:order-2 gap-4">
         {/* /**Set order to 2 in large screen */}
-        <Button className="w-12 h-10 hidden sm:inline" color={"gray"} pill>
-          <FaMoon />
+        <Button
+          className="w-12 h-10 hidden sm:inline"
+          color={"gray"}
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "light" ? <FaMoon /> : <FaSun />}
         </Button>
         {currentUser ? (
           <Dropdown
