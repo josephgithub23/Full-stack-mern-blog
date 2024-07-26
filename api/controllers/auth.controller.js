@@ -102,7 +102,7 @@ export const google = async (req, res, next) => {
         .status(200)
         .cookie("access_token", token, {
           httpOnly: true,
-          // maxAge: 36000,
+          maxAge: 36000,
         })
         .json(rest);
     }
