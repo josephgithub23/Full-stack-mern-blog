@@ -3,6 +3,11 @@ import { Sidebar } from "flowbite-react";
 import { HiArrowSmRight, HiUser } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
 
+/**
+ * NOTE: You can not have an <a> tag as a descendant to another <a> tag. so to clear this error we set the descendant <a> tag as="div"
+ *
+ */
+
 export default function DashSidebar() {
   const location = useLocation();
   const [tab, setTab] = useState("");
@@ -25,6 +30,7 @@ export default function DashSidebar() {
               icon={HiUser}
               label={"User"}
               labelColor="dark"
+              as="div"
             >
               Profile
             </Sidebar.Item>
