@@ -22,9 +22,9 @@ export default function DashProfile() {
   const { currentUser } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
-  const [imageFileUploadProgress, setImageFileUploadProgress] = useState(0);
+  const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
-  console.log(imageFileUploadProgress, imageFileUploadError);
+
   const filePikerRef = useRef();
 
   const handleImageChange = (e) => {
@@ -63,6 +63,7 @@ export default function DashProfile() {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
         setImageFileUploadProgress(progress.toFixed(0));
       },
       (error) => {
@@ -112,11 +113,12 @@ export default function DashProfile() {
                   left: 0,
                 },
                 path: {
-                  stroke: `rgba(62,152,199, ${imageFileUploadProgress / 100})`,
+                  stroke: `rgba(62,152,199,${imageFileUploadProgress / 100})`,
                 },
               }}
             />
           )}
+
           <img
             src={imageFileUrl || currentUser.profilePicture}
             alt="user"
